@@ -1,0 +1,156 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Tuwaiq DS v1.0.0 — مولّد آليًا من tokens.json. لا تعدّله يدويًا.
+   إعادة التوليد:  python3 scripts/gen_theme.py > src/styles/theme.css
+   ───────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap');
+
+:root {
+  /* ── الخط ── */
+  --font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  /* ── الألوان ── */
+  --brand: #4931AF;  /* الإجراء الرئيسي، الروابط، الحالة النشطة، الهوية */
+  --brand-hover: #3C1E93;  /* hover/active للبراند */
+  --brand-tint: #EDEAF7;  /* خلفية الأزرار الثانوية، الحالة المختارة، الشارات، التبويب النشط */
+  --brand-fg: #FFFFFF;  /* النص فوق البراند */
+  --success: #059669;  /* قبول، اكتمال، اتجاه صاعد */
+  --success-tint: #ECFDF5;  /* خلفية حالة النجاح */
+  --warning: #D97706;  /* انتباه، قيد المراجعة */
+  --warning-tint: #FFFBEB;  /* خلفية التحذير */
+  --danger: #DC2626;  /* حذف، رفض، إلغاء، خطأ */
+  --danger-tint: #FEF2F2;  /* خلفية الخطر */
+  --info: #3B6EF5;  /* معلومة محايدة، سلسلة بيانات ثانوية */
+  --info-tint: #EEF2FE;  /* خلفية المعلومة */
+  --bg: #FAFAFA;  /* خلفية الصفحة */
+  --surface: #FFFFFF;  /* البطاقات، الشيتس، البوبوفر، المودال */
+  --surface-2: #F4F4F5;  /* خلفية مدمجة: حقول، أشرطة، صفوف hover */
+  --surface-3: #F0F1F5;  /* خلفية رأس الجدول والمناطق المعطّلة */
+  --text: #111318;  /* كل النص الأساسي */
+  --text-muted: rgba(17,19,24,0.55);  /* الوصف، اللابل الثانوي، الميتاداتا */
+  --text-faint: rgba(17,19,24,0.40);  /* الـ placeholder والتلميحات */
+  --text-disabled: rgba(17,19,24,0.28);  /* النص المعطّل */
+  --hairline: rgba(17,19,24,0.08);  /* الحدود والفواصل — استخدمه بأقل قدر ممكن */
+  --chart-1: #4931AF;
+  --chart-2: #3B6EF5;
+  --chart-3: #059669;
+  --chart-4: #D97706;
+  --chart-5: #E8527A;
+
+  /* ── سلّم الطباعة (المقاس فقط — استخدم كلاسات .t-* للحزمة كاملة) ── */
+  --text-caption: 12px;
+  --lh-caption: 1.5;
+  --text-meta: 13px;
+  --lh-meta: 1.5;
+  --text-label: 14px;
+  --lh-label: 1.5;
+  --text-body: 15px;
+  --lh-body: 1.6;
+  --text-body-lg: 16px;
+  --lh-body-lg: 1.6;
+  --text-heading: 20px;
+  --lh-heading: 1.4;
+  --text-title: 28px;
+  --lh-title: 1.25;
+
+  /* ── المسافات ── */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* ── الزوايا ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── الظلال ── */
+  --shadow-1: 0 1px 2px rgba(17,19,24,0.06);
+  --shadow-2: 0 4px 16px rgba(17,19,24,0.08);
+  --shadow-3: 0 12px 32px rgba(17,19,24,0.12);
+
+  /* ── الحركة ── */
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --dur-slow: 260ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── القياسات ── */
+  --page-max: 1280px;
+  --content-gutter: 24px;
+  --sidebar-width: 264px;
+  --field-height: 44px;
+  --control-height: 40px;
+  --touch-min: 44px;
+}
+
+/* ── سلّم الطباعة كصفوف جاهزة — استخدمها بدل fontSize اليدوي ── */
+.t-caption { font-size: var(--text-caption); line-height: var(--lh-caption); font-weight: 400; }
+.t-meta { font-size: var(--text-meta); line-height: var(--lh-meta); font-weight: 400; }
+.t-label { font-size: var(--text-label); line-height: var(--lh-label); font-weight: 500; }
+.t-body { font-size: var(--text-body); line-height: var(--lh-body); font-weight: 400; }
+.t-body-lg { font-size: var(--text-body-lg); line-height: var(--lh-body-lg); font-weight: 500; }
+.t-heading { font-size: var(--text-heading); line-height: var(--lh-heading); font-weight: 600; }
+.t-title { font-size: var(--text-title); line-height: var(--lh-title); font-weight: 600; }
+
+/* ── ربط التوكنز بـ Tailwind v4 ── */
+@theme inline {
+  --font-sans: var(--font-family);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-tint: var(--brand-tint);
+  --color-brand-fg: var(--brand-fg);
+  --color-success: var(--success);
+  --color-success-tint: var(--success-tint);
+  --color-warning: var(--warning);
+  --color-warning-tint: var(--warning-tint);
+  --color-danger: var(--danger);
+  --color-danger-tint: var(--danger-tint);
+  --color-info: var(--info);
+  --color-info-tint: var(--info-tint);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-text-disabled: var(--text-disabled);
+  --color-hairline: var(--hairline);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+}
+
+/* ── الأساس ── */
+html { font-family: var(--font-family); font-size: var(--text-body); }
+body { margin: 0; background: var(--bg); color: var(--text); line-height: var(--lh-body); }
+*, *::before, *::after { box-sizing: border-box; }
+::placeholder { color: var(--text-faint); }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

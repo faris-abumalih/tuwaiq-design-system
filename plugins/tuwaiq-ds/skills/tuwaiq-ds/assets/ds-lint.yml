@@ -1,0 +1,19 @@
+name: Design System
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ds-lint:
+    name: فحص النظام التصميمي
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: تركيب أداة الفحص
+        run: |
+          git clone --depth 1 https://github.com/OWNER/tuwaiq-design-system.git /tmp/ds
+
+      - name: فحص المصدر
+        run: python3 /tmp/ds/plugins/tuwaiq-ds/scripts/ds_lint.py src

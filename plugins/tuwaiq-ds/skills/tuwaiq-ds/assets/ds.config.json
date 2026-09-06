@@ -1,0 +1,13 @@
+{
+  "//": "إعدادات فحص نظام تويق التصميمي. ضعه في جذر المشروع.",
+  "ignore": [
+    "**/node_modules/**", "**/dist/**", "**/build/**", "**/coverage/**",
+    "**/*.test.*", "**/*.spec.*", "**/*.d.ts",
+    "**/vite.config.*", "**/eslint.config.*"
+  ],
+  "tokenFiles": ["**/theme.css", "**/tokens.css"],
+  "primitivesDirs": ["**/components/primitives/**"],
+  "rules": {
+    "//": "غيّر أي قاعدة إلى error / warning / off — والأصل ألا تُطفأ قاعدة إلا بقرار فريق موثّق."
+  }
+}

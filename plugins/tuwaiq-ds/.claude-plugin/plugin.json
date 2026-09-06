@@ -1,0 +1,10 @@
+{
+  "name": "tuwaiq-ds",
+  "displayName": "Tuwaiq Design System",
+  "version": "1.0.0",
+  "description": "النظام التصميمي الموحّد لمنتجات تويق — توكنز ومكوّنات وقواعد RTL عربية، مع فحص إلزامي (PreToolUse) يمنع أي كود يخالف النظام + سكربت CI.",
+  "author": { "name": "Faris Abumalih", "email": "f.abumalih@tuwaiq.edu.sa" },
+  "license": "MIT",
+  "keywords": ["design-system", "rtl", "arabic", "tokens", "ui"],
+  "hooks": "./hooks/hooks.json"
+}

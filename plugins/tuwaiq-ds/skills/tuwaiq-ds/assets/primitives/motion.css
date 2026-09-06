@@ -1,0 +1,29 @@
+/* حركات النظام — استوردها مرة واحدة في index.css */
+@keyframes twq-fade      { from { opacity: 0 } to { opacity: 1 } }
+@keyframes twq-rise      { from { opacity: 0; transform: scale(0.96) } to { opacity: 1; transform: scale(1) } }
+@keyframes twq-slide-in  { from { transform: translateX(100%) } to { transform: translateX(0) } }
+@keyframes twq-pop       { from { opacity: 0; transform: translateY(-4px) scale(0.97) } to { opacity: 1; transform: translateY(0) scale(1) } }
+@keyframes twq-spin      { to { transform: rotate(360deg) } }
+@keyframes twq-shimmer   { to { transform: translateX(100%) } }
+
+[dir="rtl"] .twq-slide-in { animation-name: twq-slide-in-rtl; }
+@keyframes twq-slide-in-rtl { from { transform: translateX(-100%) } to { transform: translateX(0) } }
+
+.twq-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+}
+.twq-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--surface), transparent);
+  animation: twq-shimmer 1.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .twq-skeleton::after { animation: none; }
+}

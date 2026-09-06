@@ -1,0 +1,23 @@
+{
+  "name": "tuwaiq-design",
+  "owner": {
+    "name": "Faris Abumalih",
+    "email": "f.abumalih@tuwaiq.edu.sa"
+  },
+  "metadata": {
+    "description": "Tuwaiq design-system tooling for Claude Code — one design system, enforced.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "tuwaiq-ds",
+      "source": "./plugins/tuwaiq-ds",
+      "description": "النظام التصميمي الموحّد: توكنز + مكوّنات + قواعد عربية RTL، مع فحص إلزامي يمنع أي كود يخالف النظام.",
+      "version": "1.0.0",
+      "category": "design",
+      "keywords": ["design-system", "rtl", "arabic", "tokens", "ui", "react", "tailwind"],
+      "author": { "name": "Faris Abumalih" },
+      "defaultEnabled": true
+    }
+  ]
+}
