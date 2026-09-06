@@ -20,7 +20,7 @@ description: تركيب نظام تويق التصميمي في مشروع (جد
 3. **المكوّنات** — انسخ `${CLAUDE_PLUGIN_ROOT}/skills/tuwaiq-ds/assets/primitives/*` إلى
    `src/app/components/primitives/`، وانسخ `motion.css` واستورده.
 
-4. **إعدادات الفحص** — انسخ `assets/ds.config.json` إلى جذر المشروع.
+4. **إعدادات الفحص** — انسخ `assets/ds.config.example.json` إلى جذر المشروع باسم `ds.config.json`.
 
 5. **CLAUDE.md** — ألحق محتوى `assets/CLAUDE.md.snippet` بملف `CLAUDE.md` (أنشئه إن لم يوجد).
 

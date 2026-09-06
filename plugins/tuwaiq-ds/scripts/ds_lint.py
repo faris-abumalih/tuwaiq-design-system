@@ -148,6 +148,9 @@ RE_FONT_FAM   = re.compile(r"font-?[Ff]amily\s*:\s*[\"'][^\"']*[\"']")
 RE_SHADOW     = re.compile(r"\bbox-?[Ss]hadow\s*:\s*[\"']?\s*([^\"';,}]+)")
 RE_DIR_RTL    = re.compile(r"""(?<!\[)\bdir\s*=\s*["']rtl["']""")
 RE_RAW_EL     = re.compile(r"<(button|input|select|textarea|table|dialog)\b")
+RE_NATIVE_DT  = re.compile(r"""type\s*=\s*["']?(date|time|datetime-local)["']?""")
+RE_FIELDISH   = re.compile(r"<(?:Field|Input|TextArea|Textarea|Select|input|textarea|select)\b")
+RE_FOLDED     = re.compile(r"advanced|collaps|accordion|disclosure|<details|moreOptions|expandable", re.I)
 
 PHYSICAL_JS = {
     "marginLeft": "marginInlineStart", "marginRight": "marginInlineEnd",
@@ -303,6 +306,13 @@ def lint(path, text, fragment=False, cfg=None):
                     "<%s> خام خارج مجلد الـ primitives." % el,
                     "استخدم %s من النظام" % repl)
 
+        # 6ب) حقول التاريخ/الوقت الأصلية بدل لحظات النظام
+        if is_code and RE_NATIVE_DT.search(line):
+            add(i, "native-datetime", "warning",
+                "حقل تاريخ/وقت أصلي — بارد ولا يتّسق مع النظام.",
+                "شريط أيام أفقي للتاريخ، وستيبر «− 8:00 ص +» في بوبوفر للوقت "
+                "(references/design-thinking.md — القرار ٦)")
+
         # 7) نص عربي مكتوب في الكود بدل i18n
         if ext in (".tsx", ".jsx") and ARABIC.search(line):
             add(i, "i18n-hardcoded-text", "error",
@@ -326,6 +336,15 @@ def lint(path, text, fragment=False, cfg=None):
                 'خلّه يتبع لغة التطبيق (i18n dir) — و dir="ltr" فقط للأرقام/الروابط/الرسوم')
 
     # قواعد على مستوى الملف (ما تنطبق على الشظايا)
+    if not fragment and ext in (".tsx", ".jsx"):
+        code = "\n".join(code_only(lines))
+        n_fields = len(RE_FIELDISH.findall(code))
+        if n_fields >= 7 and not RE_FOLDED.search(code):
+            out.append(Finding(1, "unfolded-form", "warning",
+                "%d حقلًا في شاشة واحدة بلا أي طي." % n_fields,
+                "اسأل لكل حقل: هل يمنع غيابه إنشاء الكيان؟ لا → «خيارات متقدمة» أو صفحة الإعدادات. "
+                "علامة * على المطلوب ليست بديلًا عن الطي (references/design-thinking.md — القرار ٣)"))
+
     if not fragment and is_css and ("@keyframes" in text or re.search(r"\banimation\s*:", text)):
         if "prefers-reduced-motion" not in text:
             out.append(Finding(1, "reduced-motion", "warning",
@@ -486,6 +505,11 @@ SESSION_BRIEF = """<tuwaiq-ds>
 3. ممنوع <button>/<input>/<table> خام — استخدم مكوّنات النظام.
 4. ممنوع نص عربي داخل الكود — t() و locales فقط.
 5. المسافات من السلّم: 2/4/6/8/12/16/20/24/32/40/48/64.
+
+وقبل أي شاشة — إلزامي — بطاقة القرارات الستة (references/design-thinking.md):
+الحاوية حسب وزن الإجراء في المنتج لا عدد حقوله · بطل واحد بمقاس العنوان · ما لا يمنع غيابه
+الإنشاء يُطوى أو يُؤجّل (وعلامة * ليست بديلًا عن الطي) · شكل كل اختيار حسب طبيعته ·
+الإدخال داخل المعاينة لما يكون شكل الشيء هو وظيفته · لحظة ممتعة أو اثنتان لا أكثر.
 
 قبل بناء أي صفحة أو مكوّن: استدعِ مهارة tuwaiq-ds واتبع مسار العمل فيها.
 فحص يدوي: python3 "{script}" src

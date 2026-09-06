@@ -34,6 +34,14 @@ CASES = [
     ("استثناء بلا سبب", "a.tsx", 'const c = "#FF00AA"; // ds-allow', ["no-raw-color"], []),
     ("CSS فيزيائي", "a.css", '.x { margin-left: 8px; }', ["rtl-logical-props"], []),
     ("CSS منطقي", "a.css", '.x { margin-inline-start: 8px; }', [], ["rtl-logical-props"]),
+    ("حقل وقت أصلي", "src/components/primitives/f.tsx", '<input type="time" />', [], ["no-raw-element"]),
+    ("نموذج بلا طي", "a.tsx", "\n".join(['<Field />'] * 8), [], []),
+    ("نموذج مع طي", "a.tsx", "\n".join(['<Field />'] * 8 + ['<AdvancedSection />']), [], ["unfolded-form"]),
+]
+
+WARN_CASES = [
+    ("تحذير: حقل وقت أصلي", "src/components/primitives/f.tsx", '<input type="time" />', ["native-datetime"]),
+    ("تحذير: نموذج بلا طي", "a.tsx", "\n".join(['<Field />'] * 8), ["unfolded-form"]),
 ]
 
 def run():
@@ -51,6 +59,15 @@ def run():
             if extra:   print("    زائد: %s" % extra)
         else:
             passed += 1
+    for desc, path, code, want in WARN_CASES:
+        rules = {f.rule for f in D.lint(path, code, fragment=False, cfg=D.DEFAULT_CONFIG)
+                 if f.severity == "warning"}
+        if all(r in rules for r in want):
+            passed += 1
+        else:
+            failed += 1
+            print("✗ %s — ناقص %s (وجدنا %s)" % (desc, want, sorted(rules) or "لا شيء"))
+
     print("\n%d نجح · %d فشل" % (passed, failed))
     return 1 if failed else 0
 

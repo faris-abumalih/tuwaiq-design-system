@@ -40,7 +40,7 @@ python3 "$CLAUDE_PLUGIN_ROOT/scripts/gen_theme.py" src/styles/theme.css
 cp "$CLAUDE_PLUGIN_ROOT/skills/tuwaiq-ds/assets/primitives/"*.tsx src/app/components/primitives/
 
 # 3) إعدادات الفحص
-cp "$CLAUDE_PLUGIN_ROOT/skills/tuwaiq-ds/assets/ds.config.json" .
+cp "$CLAUDE_PLUGIN_ROOT/skills/tuwaiq-ds/assets/ds.config.example.json" ./ds.config.json
 
 # 4) الفحص في CI
 mkdir -p .github/workflows
