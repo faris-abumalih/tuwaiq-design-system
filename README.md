@@ -17,18 +17,25 @@
 
 ## التركيب
 
+**الطريقة الموصى بها — تشتغل بدون أي أدوات** (bash + python3 فقط، وهما موجودان على كل ماك):
+
+```bash
+git clone https://github.com/faris-abumalih/tuwaiq-design-system.git ~/tuwaiq-ds-src && bash ~/tuwaiq-ds-src/install.sh
+```
+
+يركّب المهارة والأمر `/ds` والوكيل والهوكس في `~/.claude` مباشرة. افتح جلسة جديدة بعدها.
+
+- **تحديث لاحقًا:** `cd ~/tuwaiq-ds-src && git pull && bash install.sh`
+- **إزالة:** `bash ~/tuwaiq-ds-src/install.sh --uninstall`
+
+**البديل — لمن عنده `claude` CLI** (يحتاج Node):
+
 ```bash
 claude plugin marketplace add faris-abumalih/tuwaiq-design-system
 claude plugin install tuwaiq-ds@tuwaiq-design
 ```
 
-للتجربة محليًا قبل الرفع:
-```bash
-claude plugin marketplace add /Users/user/Downloads/tuwaiq-design-system
-claude plugin install tuwaiq-ds@tuwaiq-design
-```
-
-ثم في أي مشروع — حتى لو كان مجلدًا فاضيًا: `/ds <طلبك>`
+> مستخدمو تطبيق كلود على الماك غالبًا **ما عندهم** `claude` CLI ولا Node — استخدموا الطريقة الأولى.
 
 ## الاستخدام اليومي
 
