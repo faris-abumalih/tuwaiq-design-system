@@ -13,7 +13,7 @@ jobs:
 
       - name: تركيب أداة الفحص
         run: |
-          git clone --depth 1 https://github.com/OWNER/tuwaiq-design-system.git /tmp/ds
+          git clone --depth 1 https://github.com/faris-abumalih/tuwaiq-design-system.git /tmp/ds
 
       - name: فحص المصدر
         run: python3 /tmp/ds/plugins/tuwaiq-ds/scripts/ds_lint.py src

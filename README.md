@@ -18,7 +18,7 @@
 ## التركيب
 
 ```bash
-claude plugin marketplace add OWNER/tuwaiq-design-system
+claude plugin marketplace add faris-abumalih/tuwaiq-design-system
 claude plugin install tuwaiq-ds@tuwaiq-design
 ```
 
